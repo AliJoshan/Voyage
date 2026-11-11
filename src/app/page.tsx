@@ -1,4 +1,5 @@
 import Navbar from "../components/layout/Navbar";
+import Hero from "../components/home/Hero";
 
 export default function Home() {
   return (
@@ -6,9 +7,9 @@ export default function Home() {
       <Navbar />
 
       <main>
-        <section className="min-h-screen bg-[#26383a]" />
+        <Hero />
 
-        <section className="min-h-screen bg-[#f5f2eb]" />
+        {/* More homepage sections will be added here */}
       </main>
     </>
   );
