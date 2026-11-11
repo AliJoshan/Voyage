@@ -1,4 +1,5 @@
 import Link from "next/link";
+import FlightSearch from "../home/FlightSearch";
 
 export default function Hero() {
   return (
@@ -8,34 +9,29 @@ export default function Hero() {
 
       {/* Background Overlays */}
       <div className="absolute inset-0 bg-linear-to-r from-black/55 via-black/25 to-transparent" />
-
       <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-black/10" />
 
       {/* Hero Content */}
-      <div className="relative z-10 mx-auto w-full max-w-[1800px] px-6 pt-28 pb-24 md:px-10 lg:px-14">
+      <div className="relative z-10 mx-auto w-full max-w-[1800px] px-6 pt-32 pb-28 md:px-10 lg:px-14">
+        {/* Heading and CTA */}
         <div className="max-w-237.5">
-          {/* Eyebrow */}
           <p className="hero-eyebrow mb-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/90 sm:text-xs md:mb-7 md:text-sm">
             Discover places · Find flights · Make memories
           </p>
 
-          {/* Main Heading */}
           <h1 className="hero-heading font-serif text-[clamp(2.4rem,6.2vw,6rem)] leading-[1.02] tracking-[-0.045em]">
             <span className="block">The world is waiting.</span>
-
             <span className="hero-heading-italic block font-normal italic">
               Where will you go?
             </span>
           </h1>
 
-          {/* Description */}
           <p className="hero-description mt-6 max-w-152.5 text-sm leading-relaxed text-white/85 sm:text-base md:mt-7 md:text-lg">
             Voyage brings together inspiring destination guides and honest,
             transparent flight search — so you can go from dreaming to departure
             in minutes.
           </p>
 
-          {/* CTA Buttons */}
           <div className="hero-buttons mt-7 flex flex-col gap-3 sm:flex-row sm:gap-4 md:mt-9">
             <Link
               href="/explore"
@@ -54,6 +50,11 @@ export default function Hero() {
               Find flights
             </Link>
           </div>
+        </div>
+
+        {/* Flight Search Panel */}
+        <div className="mt-12 w-full md:mt-14">
+          <FlightSearch />
         </div>
       </div>
 
