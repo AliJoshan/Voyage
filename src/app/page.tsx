@@ -1,5 +1,6 @@
 import Navbar from "../components/layout/Navbar";
 import Hero from "../components/home/Hero";
+import PopularDestinations from "../components/home/PopularDestinations";
 
 export default function Home() {
   return (
@@ -8,8 +9,7 @@ export default function Home() {
 
       <main>
         <Hero />
-
-        {/* More homepage sections will be added here */}
+        <PopularDestinations />
       </main>
     </>
   );
