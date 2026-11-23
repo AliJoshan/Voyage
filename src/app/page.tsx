@@ -1,6 +1,7 @@
 import Navbar from "../components/layout/Navbar";
 import Hero from "../components/home/Hero";
 import PopularDestinations from "../components/home/PopularDestinations";
+import FeaturedExperiences from "../components/home/FeaturedExperiences";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <main>
         <Hero />
         <PopularDestinations />
+        <FeaturedExperiences />
       </main>
     </>
   );

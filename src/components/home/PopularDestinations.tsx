@@ -42,7 +42,7 @@ export default function PopularDestinations() {
               Popular right now
             </p>
 
-            <h2 className="font-serif text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.08] tracking-[-0.045em] text-[#191c20]">
+            <h2 className="font-serif text-[clamp(2.2rem,4.2vw,3.8rem)] leading-[1.08] tracking-[-0.045em] text-[#191c20]">
               Destinations travellers love
             </h2>
           </div>
