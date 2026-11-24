@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import DestinationBrowser from "./DestinationBrowser";
 
 const destinations = {
   paris: {
@@ -120,6 +121,17 @@ export default function ExplorePage() {
             />
           </div>
         </section>
+
+        {/* Destination gallery */}
+        <section
+          aria-label="Featured destinations"
+          className="grid grid-cols-1 gap-5 lg:grid-cols-[2fr_1fr] lg:gap-6"
+        >
+          {/* Keep your existing Paris, Bali and Dubai cards here */}
+        </section>
+
+        {/* Browse all destinations */}
+        <DestinationBrowser />
       </div>
     </main>
   );
