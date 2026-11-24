@@ -17,6 +17,8 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const isHomePage = pathname === "/";
+
   // Detect scrolling
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +41,12 @@ export default function Navbar() {
     setIsMenuOpen(false);
   }, [pathname]);
 
-  const isSolid = isScrolled || isMenuOpen;
+  // Non-home routes always use the solid navbar
+  const isSolid = !isHomePage || isScrolled || isMenuOpen;
+
+  const solidNavbarStyle = isHomePage
+    ? "bg-white/95 text-[#242424] shadow-sm backdrop-blur-md border-b border-black/5"
+    : "bg-[#fbf9f5]/95 text-[#242424] shadow-sm backdrop-blur-md border-b border-[#e3ddd3]";
 
   const getLinkClasses = (href: string) => {
     const isActive = pathname === href;
@@ -57,11 +64,7 @@ export default function Navbar() {
       className={`
         fixed inset-x-0 top-0 z-50
         transition-all duration-300 ease-in-out
-        ${
-          isSolid
-            ? "bg-white/95 text-[#242424] shadow-sm backdrop-blur-md border-b border-black/5"
-            : "bg-transparent text-white"
-        }
+        ${isSolid ? solidNavbarStyle : "bg-transparent text-white"}
       `}
     >
       <nav
@@ -215,7 +218,17 @@ export default function Navbar() {
         `}
       >
         <div className="overflow-hidden">
-          <div className="flex flex-col gap-1 border-t border-black/5 bg-white px-6 py-5 text-[#242424]">
+          <div
+            className={`
+              flex flex-col gap-1 border-t px-6 py-5
+              ${
+                isHomePage
+                  ? "border-black/5 bg-white"
+                  : "border-[#e3ddd3] bg-[#fbf9f5]"
+              }
+              text-[#242424]
+            `}
+          >
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
 
