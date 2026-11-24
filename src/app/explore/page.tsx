@@ -85,7 +85,6 @@ export default function ExplorePage() {
     <main className="min-h-screen bg-[#fbf9f5] px-6 pb-24 pt-24 text-[#191b20] sm:px-8 lg:px-12 lg:pt-28">
       <div className="mx-auto max-w-[1800px]">
         {/* Page heading */}
-        {/* Page heading */}
         <header className="mb-10 sm:mb-12 lg:mb-14">
           <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-[#526174] sm:text-xs">
             Explore
@@ -105,19 +104,19 @@ export default function ExplorePage() {
           {/* Large Paris card */}
           <DestinationCard
             {...destinations.paris}
-            className="min-h-[480px] sm:min-h-[600px] lg:min-h-[740px]"
+            className="min-h-[480px] sm:min-h-[600px] lg:min-h-[520px]"
           />
 
           {/* Right-side destination cards */}
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-1 lg:gap-6">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-1 lg:gap-5">
             <DestinationCard
               {...destinations.bali}
-              className="min-h-[320px] sm:min-h-[360px] lg:min-h-[358px]"
+              className="min-h-[320px] sm:min-h-[360px] lg:min-h-[250px]"
             />
 
             <DestinationCard
               {...destinations.dubai}
-              className="min-h-[320px] sm:min-h-[360px] lg:min-h-[358px]"
+              className="min-h-[320px] sm:min-h-[360px] lg:min-h-[250px]"
             />
           </div>
         </section>
