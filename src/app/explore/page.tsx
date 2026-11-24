@@ -85,13 +85,15 @@ export default function ExplorePage() {
     <main className="min-h-screen bg-[#fbf9f5] px-6 pb-24 pt-24 text-[#191b20] sm:px-8 lg:px-12 lg:pt-28">
       <div className="mx-auto max-w-[1800px]">
         {/* Page heading */}
-        <header className="mb-12 sm:mb-14 lg:mb-16">
-          <p className="mb-5 text-xs font-medium uppercase tracking-[0.24em] text-[#526174] sm:text-sm">
+        {/* Page heading */}
+        <header className="mb-10 sm:mb-12 lg:mb-14">
+          <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-[#526174] sm:text-xs">
             Explore
           </p>
 
-          <h1 className="max-w-[1250px] font-serif text-[clamp(3.5rem,7vw,7rem)] leading-[0.98] tracking-[-0.055em]">
-            Find the place that <span className="italic">calls to you.</span>
+          <h1 className="max-w-[1050px] font-serif text-[clamp(2.8rem,5vw,5rem)] leading-[1.04] tracking-[-0.045em] text-[#191b20]">
+            Find the place that{" "}
+            <span className="italic text-[#526174]">calls to you.</span>
           </h1>
         </header>
 
