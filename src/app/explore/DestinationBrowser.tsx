@@ -17,6 +17,32 @@ const categories = [
 
 const destinations = [
   {
+    name: "Kyoto",
+    country: "Japan",
+    image: "/images/kyoto3.jpg",
+    price: 890,
+    description:
+      "Wooden machiya, moss gardens and maple-lit pagodas in Japan's old capital.",
+    categories: ["Culture", "Cities"],
+  },
+  {
+    name: "Santorini",
+    country: "Greece",
+    image: "/images/santorini.jpg",
+    price: 610,
+    description:
+      "Blue domes, volcanic beaches and the Aegean's most famous sunsets.",
+    categories: ["Beaches", "Culture"],
+  },
+  {
+    name: "Zermatt",
+    country: "Switzerland",
+    image: "/images/zermatt.jpg",
+    price: 690,
+    description: "A car-free alpine village beneath Europe's most iconic peak.",
+    categories: ["Mountains", "Adventure"],
+  },
+  {
     name: "Paris",
     country: "France",
     image: "/images/paris.jpg",
@@ -42,33 +68,6 @@ const destinations = [
     description:
       "Record-breaking architecture rising from the dunes of the Arabian desert.",
     categories: ["Cities", "Adventure", "Culture"],
-  },
-  {
-    name: "Santorini",
-    country: "Greece",
-    image: "/images/santorini.jpg",
-    price: 690,
-    description:
-      "Whitewashed villages, blue domes and unforgettable Mediterranean sunsets.",
-    categories: ["Beaches", "Culture"],
-  },
-  {
-    name: "Swiss Alps",
-    country: "Switzerland",
-    image: "/images/swiss-alps.jpg",
-    price: 850,
-    description:
-      "Alpine villages, dramatic peaks and some of Europe's finest mountain scenery.",
-    categories: ["Mountains", "Nature", "Adventure"],
-  },
-  {
-    name: "Kyoto",
-    country: "Japan",
-    image: "/images/kyoto.jpg",
-    price: 920,
-    description:
-      "Ancient temples, peaceful gardens and streets filled with Japanese tradition.",
-    categories: ["Cities", "Culture", "Nature"],
   },
   {
     name: "Patagonia",
@@ -100,10 +99,10 @@ export default function DestinationBrowser() {
   }, [search, activeCategory]);
 
   return (
-    <section className="mt-28 border-t border-[#e3ddd3] pt-8">
+    <section className="mt-28 border-t border-[#e3ddd3] pt-6">
       {/* Search and category filters */}
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-        {/* Search input */}
+      <div className="flex flex-col gap-5 border-b border-[#e3ddd3] pb-6 lg:flex-row lg:items-center lg:justify-between">
+        {/* Search */}
         <div className="relative w-full lg:max-w-[580px]">
           <Search
             size={21}
@@ -116,18 +115,20 @@ export default function DestinationBrowser() {
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             placeholder="Search destinations or countries"
+            aria-label="Search destinations or countries"
             className="h-[68px] w-full rounded-full border border-[#e3ddd3] bg-white/70 pl-16 pr-6 text-base text-[#191b20] outline-none transition-colors placeholder:text-[#929292] focus:border-[#1c3763]"
           />
         </div>
 
         {/* Category filters */}
-        <div className="flex flex-wrap gap-2.5 lg:justify-end">
+        <div className="flex gap-2.5 overflow-x-auto pb-1 lg:justify-end lg:overflow-visible">
           {categories.map((category) => (
             <button
               key={category}
               type="button"
               onClick={() => setActiveCategory(category)}
-              className={`rounded-full border px-6 py-3.5 text-base transition-all duration-200 ${
+              aria-pressed={activeCategory === category}
+              className={`shrink-0 rounded-full border px-6 py-3.5 text-base transition-all duration-200 ${
                 activeCategory === category
                   ? "border-[#1c3763] bg-[#1c3763] text-white"
                   : "border-[#e3ddd3] bg-white/70 text-[#242424] hover:border-[#1c3763]"
@@ -139,26 +140,18 @@ export default function DestinationBrowser() {
         </div>
       </div>
 
-      {/* Destination count */}
-      <div className="mt-6 border-t border-[#e3ddd3] pt-1">
-        <p className="text-[20px] text-[#526174]">
-          {filteredDestinations.length}{" "}
-          {filteredDestinations.length === 1 ? "destination" : "destinations"}
-        </p>
-      </div>
-
       {/* Destination grid */}
-      <div className="mt-9 grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-x-9 gap-y-14 pt-16 md:grid-cols-2 lg:grid-cols-3">
         {filteredDestinations.map((destination) => (
-          <Link
-            key={destination.name}
-            href={`/explore?destination=${encodeURIComponent(
-              destination.name,
-            )}`}
-            className="group block"
-          >
-            {/* Image */}
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] bg-[#e8e2d9]">
+          <article key={destination.name} className="group min-w-0">
+            {/* Destination image */}
+            <Link
+              href={`/explore?destination=${encodeURIComponent(
+                destination.name,
+              )}`}
+              aria-label={`Explore ${destination.name}`}
+              className="relative block aspect-[1.62/1] overflow-hidden rounded-[28px] bg-[#e8e2d9]"
+            >
               <Image
                 src={destination.image}
                 alt={`${destination.name}, ${destination.country}`}
@@ -166,16 +159,16 @@ export default function DestinationBrowser() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
-            </div>
+            </Link>
 
-            {/* Destination information */}
+            {/* Destination name and price */}
             <div className="mt-6 flex items-start justify-between gap-4">
-              <div>
+              <div className="min-w-0">
                 <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[#526174] sm:text-sm">
                   {destination.country}
                 </p>
 
-                <h3 className="font-serif text-[32px] leading-tight tracking-[-0.03em] text-[#191b20] transition-colors group-hover:text-[#526174]">
+                <h3 className="font-serif text-[32px] leading-tight tracking-[-0.03em] text-[#191b20]">
                   {destination.name}
                 </h3>
               </div>
@@ -188,10 +181,34 @@ export default function DestinationBrowser() {
               </div>
             </div>
 
-            <p className="mt-4 text-[15px] leading-relaxed text-[#526174]">
+            {/* Description */}
+            <p className="mt-4 min-h-[48px] text-[15px] leading-relaxed text-[#526174]">
               {destination.description}
             </p>
-          </Link>
+
+            {/* Category tags and details button */}
+            <div className="mt-6 flex items-center justify-between gap-3">
+              <div className="flex flex-wrap gap-2">
+                {destination.categories.map((category) => (
+                  <span
+                    key={category}
+                    className="rounded-full bg-[#f0ede7] px-3.5 py-2 text-sm text-[#242424]"
+                  >
+                    {category}
+                  </span>
+                ))}
+              </div>
+
+              <Link
+                href={`/explore?destination=${encodeURIComponent(
+                  destination.name,
+                )}`}
+                className="shrink-0 rounded-full border border-[#e3ddd3] bg-transparent px-5 py-2.5 text-sm text-[#191b20] shadow-sm transition-all duration-200 hover:border-[#1c3763] hover:bg-[#1c3763] hover:text-white"
+              >
+                View details
+              </Link>
+            </div>
+          </article>
         ))}
       </div>
 
