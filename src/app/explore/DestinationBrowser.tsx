@@ -101,13 +101,13 @@ export default function DestinationBrowser() {
   return (
     <section className="mt-28 border-t border-[#e3ddd3] pt-6">
       {/* Search and category filters */}
-      <div className="flex flex-col gap-5 border-b border-[#e3ddd3] pb-6 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-4 border-b border-[#e3ddd3] pb-5 lg:flex-row lg:items-center lg:justify-between">
         {/* Search */}
-        <div className="relative w-full lg:max-w-[580px]">
+        <div className="relative w-full lg:max-w-[540px]">
           <Search
-            size={21}
+            size={19}
             strokeWidth={1.8}
-            className="absolute left-6 top-1/2 -translate-y-1/2 text-[#626873]"
+            className="absolute left-5 top-1/2 -translate-y-1/2 text-[#626873]"
           />
 
           <input
@@ -116,19 +116,19 @@ export default function DestinationBrowser() {
             onChange={(event) => setSearch(event.target.value)}
             placeholder="Search destinations or countries"
             aria-label="Search destinations or countries"
-            className="h-[68px] w-full rounded-full border border-[#e3ddd3] bg-white/70 pl-16 pr-6 text-base text-[#191b20] outline-none transition-colors placeholder:text-[#929292] focus:border-[#1c3763]"
+            className="h-[58px] w-full rounded-full border border-[#e3ddd3] bg-white/70 pl-12 pr-5 text-sm text-[#191b20] outline-none transition-colors placeholder:text-[#929292] focus:border-[#1c3763]"
           />
         </div>
 
         {/* Category filters */}
-        <div className="flex gap-2.5 overflow-x-auto pb-1 lg:justify-end lg:overflow-visible">
+        <div className="flex gap-2 overflow-x-auto pb-1 lg:justify-end lg:overflow-visible">
           {categories.map((category) => (
             <button
               key={category}
               type="button"
               onClick={() => setActiveCategory(category)}
               aria-pressed={activeCategory === category}
-              className={`shrink-0 rounded-full border px-6 py-3.5 text-base transition-all duration-200 ${
+              className={`shrink-0 rounded-full border px-5 py-3 text-sm transition-all duration-200 ${
                 activeCategory === category
                   ? "border-[#1c3763] bg-[#1c3763] text-white"
                   : "border-[#e3ddd3] bg-white/70 text-[#242424] hover:border-[#1c3763]"
@@ -141,7 +141,7 @@ export default function DestinationBrowser() {
       </div>
 
       {/* Destination grid */}
-      <div className="grid grid-cols-1 gap-x-9 gap-y-14 pt-16 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-x-9 gap-y-12 pt-14 md:grid-cols-2 lg:grid-cols-3">
         {filteredDestinations.map((destination) => (
           <article key={destination.name} className="group min-w-0">
             {/* Destination image */}
@@ -150,7 +150,7 @@ export default function DestinationBrowser() {
                 destination.name,
               )}`}
               aria-label={`Explore ${destination.name}`}
-              className="relative block aspect-[1.62/1] overflow-hidden rounded-[28px] bg-[#e8e2d9]"
+              className="relative block aspect-[1.62/1] overflow-hidden rounded-[26px] bg-[#e8e2d9]"
             >
               <Image
                 src={destination.image}
@@ -162,37 +162,37 @@ export default function DestinationBrowser() {
             </Link>
 
             {/* Destination name and price */}
-            <div className="mt-6 flex items-start justify-between gap-4">
+            <div className="mt-5 flex items-start justify-between gap-4">
               <div className="min-w-0">
-                <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[#526174] sm:text-sm">
+                <p className="mb-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-[#526174]">
                   {destination.country}
                 </p>
 
-                <h3 className="font-serif text-[32px] leading-tight tracking-[-0.03em] text-[#191b20]">
+                <h3 className="font-serif text-[28px] leading-tight tracking-[-0.03em] text-[#191b20] transition-colors group-hover:text-[#526174]">
                   {destination.name}
                 </h3>
               </div>
 
               <div className="shrink-0 text-right">
-                <p className="text-base text-[#526174]">from</p>
-                <p className="text-xl font-medium text-[#191b20]">
+                <p className="text-sm text-[#526174]">from</p>
+                <p className="text-lg font-medium text-[#191b20]">
                   ${destination.price}
                 </p>
               </div>
             </div>
 
             {/* Description */}
-            <p className="mt-4 min-h-[48px] text-[15px] leading-relaxed text-[#526174]">
+            <p className="mt-3 min-h-[44px] text-sm leading-relaxed text-[#526174]">
               {destination.description}
             </p>
 
             {/* Category tags and details button */}
-            <div className="mt-6 flex items-center justify-between gap-3">
-              <div className="flex flex-wrap gap-2">
+            <div className="mt-5 flex items-center justify-between gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {destination.categories.map((category) => (
                   <span
                     key={category}
-                    className="rounded-full bg-[#f0ede7] px-3.5 py-2 text-sm text-[#242424]"
+                    className="rounded-full bg-[#f0ede7] px-3 py-1.5 text-xs text-[#242424]"
                   >
                     {category}
                   </span>
@@ -203,7 +203,7 @@ export default function DestinationBrowser() {
                 href={`/explore?destination=${encodeURIComponent(
                   destination.name,
                 )}`}
-                className="shrink-0 rounded-full border border-[#e3ddd3] bg-transparent px-5 py-2.5 text-sm text-[#191b20] shadow-sm transition-all duration-200 hover:border-[#1c3763] hover:bg-[#1c3763] hover:text-white"
+                className="shrink-0 rounded-full border border-[#e3ddd3] bg-transparent px-4 py-2 text-xs text-[#191b20] shadow-sm transition-all duration-200 hover:border-[#1c3763] hover:bg-[#1c3763] hover:text-white"
               >
                 View details
               </Link>
@@ -214,8 +214,8 @@ export default function DestinationBrowser() {
 
       {/* Empty search result */}
       {filteredDestinations.length === 0 && (
-        <div className="py-20 text-center">
-          <p className="font-serif text-2xl text-[#191b20]">
+        <div className="py-16 text-center">
+          <p className="font-serif text-xl text-[#191b20]">
             No destinations found
           </p>
           <p className="mt-2 text-sm text-[#526174]">
