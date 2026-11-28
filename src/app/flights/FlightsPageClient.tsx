@@ -354,13 +354,13 @@ export default function FlightsPageClient() {
     <main className="min-h-screen bg-[#fbf9f5] px-5 pb-24 pt-10 text-[#191b20] sm:px-8 lg:px-12 lg:pt-12">
       <div className="mx-auto max-w-[1800px]">
         {/* Page heading */}
-        <header className="mb-10">
-          <h1 className="font-serif text-5xl leading-[1.05] tracking-[-0.04em] sm:text-6xl lg:text-[72px]">
+        <header className="mb-9">
+          <h1 className="font-serif text-[clamp(2.5rem,4.5vw,4.5rem)] leading-[1.04] tracking-[-0.045em]">
             {fromName.split(" (")[0]} <span className="text-[#69717c]">to</span>{" "}
             {toName.split(" (")[0]}
           </h1>
 
-          <p className="mt-4 text-sm text-[#697587] sm:text-base lg:text-[20px]">
+          <p className="mt-3 text-sm text-[#697587] sm:text-[15px]">
             {formatDate(departureDate)}
             {tripType === "round-trip" && returnDate
               ? ` – ${formatDate(returnDate)}`
@@ -373,14 +373,14 @@ export default function FlightsPageClient() {
         </header>
 
         {/* Search panel */}
-        <section className="mb-14 rounded-[30px] border border-[#e4ddd3] bg-white/70 p-5 shadow-[0_12px_35px_rgba(35,30,20,0.06)] sm:p-7 lg:rounded-[40px] lg:p-9">
+        <section className="mb-12 rounded-[28px] border border-[#e4ddd3] bg-white/70 p-5 shadow-[0_8px_28px_rgba(35,30,20,0.045)] sm:p-6 lg:p-7">
           {/* Search options */}
           <div className="mb-7 flex flex-wrap items-center gap-3">
             <div className="flex rounded-full bg-[#f2eee7] p-1">
               <button
                 type="button"
                 onClick={() => setTripType("round-trip")}
-                className={`rounded-full px-5 py-2.5 text-sm transition sm:text-base ${
+                className={`rounded-full px-4 py-2 text-[13px] transition ${
                   tripType === "round-trip"
                     ? "bg-[#19345e] text-white"
                     : "text-[#69717c] hover:text-[#191b20]"
@@ -392,7 +392,7 @@ export default function FlightsPageClient() {
               <button
                 type="button"
                 onClick={() => setTripType("one-way")}
-                className={`rounded-full px-5 py-2.5 text-sm transition sm:text-base ${
+                className={`rounded-full px-4 py-2 text-[13px] transition ${
                   tripType === "one-way"
                     ? "bg-[#19345e] text-white"
                     : "text-[#69717c] hover:text-[#191b20]"
@@ -405,7 +405,7 @@ export default function FlightsPageClient() {
             <select
               value={passengers}
               onChange={(event) => setPassengers(Number(event.target.value))}
-              className="rounded-full bg-[#f2eee7] px-5 py-3 text-sm outline-none sm:text-base"
+              className="rounded-full bg-[#f2eee7] px-4 py-2.5 text-[13px] outline-none transition-colors focus:ring-1 focus:ring-[#19345e]"
               aria-label="Passengers"
             >
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((count) => (
@@ -418,7 +418,7 @@ export default function FlightsPageClient() {
             <select
               value={cabin}
               onChange={(event) => setCabin(event.target.value)}
-              className="rounded-full bg-[#f2eee7] px-5 py-3 text-sm outline-none sm:text-base"
+              className="rounded-full bg-[#f2eee7] px-4 py-2.5 text-[13px] outline-none transition-colors focus:ring-1 focus:ring-[#19345e]"
               aria-label="Cabin class"
             >
               <option>Economy</option>
@@ -431,15 +431,17 @@ export default function FlightsPageClient() {
           {/* Search fields */}
           <div className="grid grid-cols-1 items-end gap-4 md:grid-cols-2 xl:grid-cols-[1fr_52px_1fr_0.85fr_0.85fr_auto]">
             <label className="flex min-w-0 flex-col gap-2">
-              <span className="text-xs font-medium uppercase text-[#69717c] sm:text-sm">
+              <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-[#69717c]">
                 From
               </span>
 
               <select
                 value={from}
                 onChange={(event) => setFrom(event.target.value)}
-                className="h-[60px] w-full rounded-[22px] border border-[#e1d9cf] bg-transparent px-4 text-sm outline-none transition focus:border-[#19345e] sm:text-base"
               >
+                className="h-[54px] w-full rounded-[18px] border
+                border-[#e1d9cf] bg-transparent px-4 text-[13px] outline-none
+                transition focus:border-[#19345e]"
                 {airports.map((airport) => (
                   <option key={airport.code} value={airport.code}>
                     {airport.name}
@@ -472,14 +474,14 @@ export default function FlightsPageClient() {
             </button>
 
             <label className="flex min-w-0 flex-col gap-2">
-              <span className="text-xs font-medium uppercase text-[#69717c] sm:text-sm">
+              <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-[#69717c]">
                 To
               </span>
 
               <select
                 value={to}
                 onChange={(event) => setTo(event.target.value)}
-                className="h-[60px] w-full rounded-[22px] border border-[#e1d9cf] bg-transparent px-4 text-sm outline-none transition focus:border-[#19345e] sm:text-base"
+                className="h-[54px] w-full rounded-[18px] border border-[#e1d9cf] bg-transparent px-4 text-[13px] outline-none transition focus:border-[#19345e]"
               >
                 {airports.map((airport) => (
                   <option key={airport.code} value={airport.code}>
@@ -490,7 +492,7 @@ export default function FlightsPageClient() {
             </label>
 
             <label className="flex min-w-0 flex-col gap-2">
-              <span className="text-xs font-medium uppercase text-[#69717c] sm:text-sm">
+              <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-[#69717c]">
                 Depart
               </span>
 
@@ -498,13 +500,13 @@ export default function FlightsPageClient() {
                 type="date"
                 value={departureDate}
                 onChange={(event) => setDepartureDate(event.target.value)}
-                className="h-[60px] w-full min-w-0 rounded-[22px] border border-[#e1d9cf] bg-transparent px-4 text-sm outline-none focus:border-[#19345e] sm:text-base"
+                className="h-[54px] w-full min-w-0 rounded-[18px] border border-[#e1d9cf] bg-transparent px-4 text-[13px] outline-none focus:border-[#19345e]"
               />
             </label>
 
             {tripType === "round-trip" && (
               <label className="flex min-w-0 flex-col gap-2">
-                <span className="text-xs font-medium uppercase text-[#69717c] sm:text-sm">
+                <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-[#69717c]">
                   Return
                 </span>
 
@@ -513,7 +515,7 @@ export default function FlightsPageClient() {
                   value={returnDate}
                   min={departureDate}
                   onChange={(event) => setReturnDate(event.target.value)}
-                  className="h-[60px] w-full min-w-0 rounded-[22px] border border-[#e1d9cf] bg-transparent px-4 text-sm outline-none focus:border-[#19345e] sm:text-base"
+                  className="h-[54px] w-full min-w-0 rounded-[18px] border border-[#e1d9cf] bg-transparent px-4 text-[13px] outline-none focus:border-[#19345e]"
                 />
               </label>
             )}
@@ -521,7 +523,7 @@ export default function FlightsPageClient() {
             <button
               type="button"
               onClick={searchFlights}
-              className="flex h-[60px] items-center justify-center gap-3 rounded-full bg-[#19345e] px-7 text-sm font-medium text-white transition hover:bg-[#244878] sm:text-base"
+              className="flex h-[54px] items-center justify-center gap-2 rounded-full bg-[#19345e] px-6 text-[13px] font-medium text-white transition hover:bg-[#244878]"
             >
               <svg
                 width="20"
@@ -547,7 +549,7 @@ export default function FlightsPageClient() {
           <aside className="space-y-9">
             {/* Stops */}
             <div>
-              <h2 className="mb-4 text-sm font-medium uppercase text-[#69717c]">
+              <h2 className="mb-4 text-[11px] font-medium uppercase tracking-[0.14em] text-[#69717c]">
                 Stops
               </h2>
 
@@ -559,13 +561,13 @@ export default function FlightsPageClient() {
                 ].map((stop) => (
                   <label
                     key={stop.value}
-                    className="flex cursor-pointer items-center gap-4 text-base sm:text-lg"
+                    className="flex cursor-pointer items-center gap-3 text-[13px] text-[#343943]"
                   >
                     <input
                       type="checkbox"
                       checked={selectedStops.includes(stop.value)}
                       onChange={() => toggleStop(stop.value)}
-                      className="h-5 w-5 accent-[#19345e]"
+                      className="h-4 w-4 accent-[#19345e]"
                     />
                     {stop.label}
                   </label>
@@ -575,7 +577,7 @@ export default function FlightsPageClient() {
 
             {/* Airlines */}
             <div>
-              <h2 className="mb-4 text-sm font-medium uppercase text-[#69717c]">
+              <h2 className="mb-4 text-[11px] font-medium uppercase tracking-[0.14em] text-[#69717c]">
                 Airlines
               </h2>
 
@@ -583,13 +585,13 @@ export default function FlightsPageClient() {
                 {airlines.map((airline) => (
                   <label
                     key={airline}
-                    className="flex cursor-pointer items-center gap-4 text-base sm:text-lg"
+                    className="flex cursor-pointer items-center gap-3 text-[13px] text-[#343943]"
                   >
                     <input
                       type="checkbox"
                       checked={selectedAirlines.includes(airline)}
                       onChange={() => toggleAirline(airline)}
-                      className="h-5 w-5 accent-[#19345e]"
+                      className="h-4 w-4 accent-[#19345e]"
                     />
                     {airline}
                   </label>
@@ -600,11 +602,13 @@ export default function FlightsPageClient() {
             {/* Price slider */}
             <div>
               <div className="mb-4 flex items-center justify-between">
-                <h2 className="text-sm font-medium uppercase text-[#69717c]">
+                <h2 className="text-[11px] font-medium uppercase tracking-[0.14em] text-[#69717c]">
                   Max price
                 </h2>
 
-                <span className="text-sm text-[#69717c]">${maxPrice}</span>
+                <span className="text-[13px] font-medium text-[#69717c]">
+                  ${maxPrice}
+                </span>
               </div>
 
               <input
@@ -622,7 +626,7 @@ export default function FlightsPageClient() {
             <button
               type="button"
               onClick={clearFilters}
-              className="rounded-full px-5 py-3 text-sm font-medium transition hover:bg-[#f0ece5]"
+              className="rounded-full px-4 py-2.5 text-[13px] font-medium transition hover:bg-[#f0ece5]"
             >
               Clear filters
             </button>
@@ -653,15 +657,15 @@ export default function FlightsPageClient() {
                   key={option.id}
                   type="button"
                   onClick={() => setSortBy(option.id)}
-                  className={`relative flex min-h-[88px] flex-col items-start justify-center border-b border-[#e4ddd3] px-6 py-4 text-left transition last:border-b-0 sm:min-h-[104px] sm:border-b-0 sm:border-r sm:px-7 sm:last:border-r-0 ${
+                  className={`relative flex min-h-[76px] flex-col items-start justify-center border-b border-[#e4ddd3] px-5 py-3 text-left transition last:border-b-0 sm:min-h-[88px] sm:border-b-0 sm:border-r sm:px-6 sm:last:border-r-0 ${
                     sortBy === option.id ? "bg-[#f6f3ee]" : "hover:bg-[#faf8f4]"
                   }`}
                 >
-                  <span className="text-base font-medium sm:text-lg">
+                  <span className="text-[13px] font-medium">
                     {option.label}
                   </span>
 
-                  <span className="text-sm text-[#697587]">
+                  <span className="text-xs text-[#697587]">
                     ${option.price}
                   </span>
 
@@ -672,7 +676,7 @@ export default function FlightsPageClient() {
               ))}
             </div>
 
-            <p className="mb-6 text-base text-[#697587] sm:text-lg">
+            <p className="mb-5 text-[13px] text-[#697587]">
               {filteredFlights.length} of {flights.length} flights
             </p>
 
@@ -689,14 +693,14 @@ export default function FlightsPageClient() {
                 >
                   {/* Flight details */}
                   <div className="min-w-0 p-5 sm:p-7">
-                    <p className="mb-5 text-sm text-[#697587] sm:text-base">
+                    <p className="mb-4 text-[13px] text-[#697587]">
                       {flight.airline} · {flight.flightNumber} · {cabin}
                     </p>
 
                     <div className="grid grid-cols-[48px_1fr] items-center gap-4 sm:grid-cols-[60px_1fr] sm:gap-6">
                       {/* Airline logo */}
                       <div
-                        className="flex h-12 w-12 items-center justify-center rounded-full text-sm font-semibold text-white sm:h-[60px] sm:w-[60px] sm:text-base"
+                        className="flex h-11 w-11 items-center justify-center rounded-full text-[13px] font-semibold text-white sm:h-12 sm:w-12"
                         style={{ backgroundColor: flight.logoColor }}
                       >
                         {flight.logo}
@@ -705,17 +709,17 @@ export default function FlightsPageClient() {
                       {/* Route timeline */}
                       <div className="grid min-w-0 grid-cols-[auto_1fr_auto] items-center gap-3 sm:gap-5">
                         <div>
-                          <p className="text-xl font-medium tracking-tight sm:text-2xl lg:text-[30px]">
+                          <p className="text-xl font-medium tracking-tight sm:text-[22px]">
                             {flight.departure}
                           </p>
 
-                          <p className="mt-1 text-sm text-[#697587]">
+                          <p className="mt-1 text-xs text-[#697587]">
                             {getAirportCode(from)}
                           </p>
                         </div>
 
                         <div className="min-w-0 px-1">
-                          <p className="mb-2 text-center text-xs text-[#697587] sm:text-sm">
+                          <p className="mb-2 text-center text-[11px] text-[#697587]">
                             {formatDuration(flight.duration)}
                           </p>
 
@@ -723,7 +727,7 @@ export default function FlightsPageClient() {
                             <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#e2dbd1] bg-[#fbf9f5]" />
                           </div>
 
-                          <p className="mt-2 text-center text-xs text-[#697587] sm:text-sm">
+                          <p className="mt-2 text-center text-[11px] text-[#697587]">
                             {flight.stops === 0
                               ? "Nonstop"
                               : `${flight.stops} stop · ${flight.stopCode}`}
@@ -731,14 +735,14 @@ export default function FlightsPageClient() {
                         </div>
 
                         <div className="text-right">
-                          <p className="text-xl font-medium tracking-tight sm:text-2xl lg:text-[30px]">
+                          <p className="text-xl font-medium tracking-tight sm:text-[22px]">
                             {flight.arrival}
                             {flight.nextDay && (
                               <sup className="ml-1 text-xs">+1</sup>
                             )}
                           </p>
 
-                          <p className="mt-1 text-sm text-[#697587]">
+                          <p className="mt-1 text-xs text-[#697587]">
                             {getAirportCode(to)}
                           </p>
                         </div>
@@ -749,11 +753,11 @@ export default function FlightsPageClient() {
                   {/* Price and action */}
                   <div className="flex flex-row items-center justify-between border-t border-[#e4ddd3] px-5 py-5 sm:px-7 xl:flex-col xl:items-end xl:justify-center xl:border-l xl:border-t-0 xl:px-8">
                     <div className="text-left xl:text-right">
-                      <p className="text-3xl font-medium tracking-tight sm:text-4xl">
+                      <p className="text-[26px] font-medium tracking-tight sm:text-[28px]">
                         ${flight.price}
                       </p>
 
-                      <p className="mt-1 text-sm text-[#697587] sm:text-base">
+                      <p className="mt-1 text-xs text-[#697587]">
                         per traveller
                       </p>
                     </div>
@@ -761,7 +765,7 @@ export default function FlightsPageClient() {
                     <button
                       type="button"
                       onClick={() => setSelectedFlight(flight.id)}
-                      className={`rounded-full px-6 py-3 text-sm font-medium text-white transition sm:text-base xl:mt-5 ${
+                      className={`rounded-full px-5 py-2.5 text-[13px] font-medium text-white transition xl:mt-5 ${
                         selectedFlight === flight.id
                           ? "bg-[#31577e]"
                           : "bg-[#19345e] hover:bg-[#244878]"
